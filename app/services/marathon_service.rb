@@ -16,12 +16,14 @@ class MarathonService
 
   def sync
     declarations.each do |name, issue|
+      conb = contributions(name)
       member = Member.find_by_name(name) || Member.new(name: name)
       member.home = issue.user.html_url
       member.github_id = issue.user.id
+      member.svg = conb.svg
       member.save
 
-      contributions(name).contributions.each do |date, count|
+      conb.contributions.each do |date, count|
         contrib = member.contributions.find_by(date: date) || Contribution.new(date: date, member: member )
         contrib.count = count
         contrib.save
@@ -40,9 +42,12 @@ class Contributions
     "https://github.com/users/#{@name}/contributions"
   end
 
+  def svg
+    open(url).read
+  end
+
   def xml
-    @xml = Nokogiri::XML(open(url)) if not @xml
-    @xml
+    @xml ||= Nokogiri::XML(url)
   end
 
   def contributions

@@ -1,5 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Member, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  senghoo = Member.find_by_name "senghoo"
+  expect(senghoo.current_streak).to be_kind_of Integer
 end

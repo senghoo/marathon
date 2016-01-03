@@ -14,4 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require turbolinks
+//= require jquery.svg.js
+//= require jquery.svganim.js
+//= require jquery.svgdom.js
 //= require_tree .

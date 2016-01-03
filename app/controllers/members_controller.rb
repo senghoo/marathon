@@ -4,7 +4,7 @@ class MembersController < ApplicationController
   # GET /members
   # GET /members.json
   def index
-    @members = Member.all
+    @members = Member.all.sort_by { |m| -m.current_streak }
   end
 
   # GET /members/1
