@@ -1,0 +1,27 @@
+<%- model_class = Member -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:home) %></th>
+      <th><%= model_class.human_attribute_name(:github_id) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @members.each do |member| %>
+      <tr>
+        <td><%= member.id %></td>
+          <td><%= member.name %></td>
+          <td><%= member.home %></td>
+          <td><%= member.github_id %></td>
+        <td><%=l member.created_at, format: :long %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

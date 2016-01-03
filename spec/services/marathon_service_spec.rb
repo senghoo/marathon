@@ -11,8 +11,13 @@ RSpec.describe MarathonService do
 
   it "can get contributions" do
     expect(contributions.url).to eq("https://github.com/users/senghoo/contributions")
-    expect(contributions.contributions.keys.last).to eq(Date.today)
-    expect(contributions.current_streak).to be_kind_of Integer
-    expect(contributions.longest_streak).to be_kind_of Integer
+    expect(contributions.contributions.size).to eq(366)
+  end
+
+  it "is sync infomations" do
+    service.sync
+    senghoo = Member.find_by name: 'senghoo'
+    expect(senghoo).to be_kind_of Member
+    expect(senghoo.contributions.size).to eq(366)
   end
 end

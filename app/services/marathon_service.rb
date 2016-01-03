@@ -13,6 +13,21 @@ class MarathonService
   def contributions(name)
     Contributions.new name
   end
+
+  def sync
+    declarations.each do |name, issue|
+      member = Member.find_by_name(name) || Member.new(name: name)
+      member.home = issue.user.html_url
+      member.github_id = issue.user.id
+      member.save
+
+      contributions(name).contributions.each do |date, count|
+        contrib = member.contributions.find_by(date: date) || Contribution.new(date: date, member: member )
+        contrib.count = count
+        contrib.save
+      end
+    end
+  end
 end
 
 
