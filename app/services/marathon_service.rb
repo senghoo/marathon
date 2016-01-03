@@ -45,11 +45,11 @@ class Contributions
   end
 
   def svg
-    open(url).read
+    @svg ||= open(url).read
   end
 
   def xml
-    @xml ||= Nokogiri::XML(url)
+    @xml ||= Nokogiri::XML(svg)
   end
 
   def contributions
