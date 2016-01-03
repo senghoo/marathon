@@ -3,7 +3,9 @@ require 'open-uri'
 
 class MarathonService
   def initialize
-    @github = Github.new
+    github_id = ENV['GITHUB_ID']
+    github_secret = ENV['GITHUB_SECRET']
+    @github = Github.new basic_auth: "#{github_id}:#{github_secret}"
   end
   def declarations
     issues = @github.issues.list user: 'geekan', repo: 'coding_marathon'
