@@ -5,7 +5,7 @@ class Member < ActiveRecord::Base
   end
   def current_streak
     last = contributions.order(date: :desc).first
-    if [Date.today, Date.today - 1].include? last.date
+    if [Date.today, Date.today - 1, Date.tody + 1].include? last.date
       last.streak
     else
       0
