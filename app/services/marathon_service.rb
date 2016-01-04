@@ -8,8 +8,13 @@ class MarathonService
     @github = Github.new basic_auth: "#{github_id}:#{github_secret}"
   end
   def declarations
+    res = Hash.new
     issues = @github.issues.list user: 'geekan', repo: 'coding_marathon'
-    Hash[issues.collect { |issue| [issue.user.login, issue] }]
+    while issues
+      res = res.merge Hash[issues.collect { |issue| [issue.user.login, issue] }]
+      issues = issues.next_page
+    end
+    res
   end
 
   def contributions(name)

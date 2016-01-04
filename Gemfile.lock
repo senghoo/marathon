@@ -120,6 +120,7 @@ GEM
       multi_xml (~> 0.5)
       rack (~> 1.2)
     pg (0.18.4)
+    puma (2.15.3)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -239,6 +240,7 @@ DEPENDENCIES
   jquery-rails
   nokogiri
   pg (~> 0.15)
+  puma
   rails (= 4.2.5)
   rails_12factor
   redsnow
