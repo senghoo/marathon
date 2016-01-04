@@ -80,6 +80,7 @@ test:
 #
 production:
   <<: *default
+  host: localhost
   database: marathon_production
   username: marathon
   password: <%= ENV['MARATHON_DATABASE_PASSWORD'] %>
