@@ -4,8 +4,17 @@ class Member < ActiveRecord::Base
     "https://avatars.githubusercontent.com/u/#{github_id}?v=3"
   end
   def current_streak
-    last_no_commit = contributions.where("count = 0 and date != ?", Date.today).order(date: :desc).first.date
-    (Date.today - last_no_commit).to_i
+    last = contributions.order(date: :desc).first
+    if [Date.today, Date.today - 1].include? last.date
+      last.streak
+    else
+      0
+    end
+  end
+
+
+  def max_streak
+    contributions.maximum(:streak)
   end
 
   def streak_image_url

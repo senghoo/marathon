@@ -25,10 +25,17 @@ class MarathonService
       member.svg = conb.svg
       member.save
 
+      streak = 0
       conb.contributions.each do |date, count|
-        contrib = member.contributions.find_by(date: date) || Contribution.new(date: date, member: member )
-        contrib.count = count
-        contrib.save
+        if count == 0
+          streak = 0
+        else
+          streak += 1
+          contrib = member.contributions.find_by(date: date) || Contribution.new(date: date, member: member )
+          contrib.count = count
+          contrib.streak = streak
+          contrib.save
+        end
       end
     end
   end
