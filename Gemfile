@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 #source 'https://ruby.taobao.org/'
 
 
-ruby '2.2.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use postgresql as the database for Active Record
@@ -28,7 +27,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use bootstrap
 gem 'bootstrap-sass'
 gem 'bootstrap-sass-extras'
-gem 'redsnow'
 
 # github api
 gem "github_api"
