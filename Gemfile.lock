@@ -156,11 +156,6 @@ GEM
     rake (10.4.2)
     rdoc (4.2.1)
       json (~> 1.4)
-    redsnow (0.4.3)
-      bundler (>= 1.7.0)
-      ffi (~> 1.9.3)
-      rake (>= 10.3.2)
-      yard (~> 0.8.7.4)
     rspec-core (3.4.1)
       rspec-support (~> 3.4.0)
     rspec-expectations (3.4.0)
@@ -223,7 +218,6 @@ GEM
     websocket (1.2.2)
     xpath (2.0.0)
       nokogiri (~> 1.3)
-    yard (0.8.7.6)
 
 PLATFORMS
   ruby
@@ -243,7 +237,6 @@ DEPENDENCIES
   puma
   rails (= 4.2.5)
   rails_12factor
-  redsnow
   rspec-rails
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

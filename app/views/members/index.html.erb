@@ -11,7 +11,7 @@
                 <div class="caption">
                     <h3> <%= member.name %> </h3>
                     <p>
-                        <%= link_to "Github", member.home %>
+                        <%= link_to "Follow @#{member.name}", member.home, {class: 'github-button', :data => {style: 'mega', 'count-href' => "/#{member.name}/followers", 'count-api' => "/users/#{member.name}#followers", 'content-aria-label' => '# followers on GitHub', 'label' => "Follow @#{member.name} on Github"}} %>
                     </p>
                     <p> Current Streak: <%= member.current_streak %> </p>
                     <p> Max Streak: <%= member.max_streak %> </p>
@@ -23,3 +23,5 @@
         </div>
     </div>
 <% end %>
+<!-- Place this tag right after the last button or just before your close body tag. -->
+<script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
