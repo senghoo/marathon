@@ -12,6 +12,10 @@ class Member < ActiveRecord::Base
     end
   end
 
+  def last_day_count
+    contributions.order(date: :desc).first.count
+  end
+
 
   def max_streak
     contributions.maximum(:streak)
