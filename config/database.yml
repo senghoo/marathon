@@ -51,4 +51,5 @@ production:
   <<: *default
   database: marathon_production
   username: marathon
+  host: <%= ENV['MARATHON_DATABASE_HOST'] %>
   password: <%= ENV['MARATHON_DATABASE_PASSWORD'] %>
