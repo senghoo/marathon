@@ -3,7 +3,7 @@
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
 
-<% @members.each do |member| %>
+<% @members.each_with_index do |member, index| %>
     <div class="row">
         <div class="col-md-4">
             <div class="thumbnail">
@@ -13,6 +13,7 @@
                     <p>
                         <%= link_to "Follow @#{member.name}", member.home, {class: 'github-button', :data => {style: 'mega', 'count-href' => "/#{member.name}/followers", 'count-api' => "/users/#{member.name}#followers", 'content-aria-label' => '# followers on GitHub', 'label' => "Follow @#{member.name} on Github"}} %>
                     </p>
+                    <p> Rank : <%= (index+1).ordinalize %> </p>
                     <p> Current Streak: <%= member.current_streak %> </p>
                     <p> Max Streak: <%= member.max_streak %> </p>
                     <p> Last Day Count: <%= member.last_day_count %> </p>
